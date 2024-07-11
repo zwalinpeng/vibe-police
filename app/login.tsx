@@ -24,8 +24,9 @@ export default function Login() {
 
       window.location.hash = "";
       window.localStorage.setItem("token", token);
-      setToken(token);
     }
+
+    setToken(token);
   }, []);
 
   const logout = () => {
