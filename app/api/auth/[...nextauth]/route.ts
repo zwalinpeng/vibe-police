@@ -6,7 +6,6 @@ const handler = NextAuth({
     SpotifyProvider({
       clientId: process.env.CLIENT_ID as string,
       clientSecret: process.env.CLIENT_SECRET as string,
-      authorization: "https://accounts.spotify.com/authorize?",
     }),
   ],
 });
