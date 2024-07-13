@@ -1,26 +1,18 @@
-"use client";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
-import { useSession, signIn, signOut } from "next-auth/react";
+export default async function Home() {
+  const session = await getServerSession();
 
-export default function Home() {
-  const { data: session } = useSession();
-
-  // check if session exists
-  if (session) {
-    // if logged in
-    return (
-      <>
-        <p>Welcome {session.user?.name}</p>
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
-    );
+  // redirect to login is not logged in
+  if (!session) {
+    redirect("/login");
   }
-  // if not logged in
+
+  // if logged in
   return (
     <>
-      {" "}
-      <p>Not Signed In</p>
-      <button onClick={() => signIn("spotify")}>log in</button>
+      <p>Welcome {session.user?.name}</p>
     </>
   );
 }
