@@ -6,11 +6,7 @@ export default function Home() {
   return (
     <>
       <p>idk u</p>
-      <button
-        onClick={() =>
-          signIn("spotify", { callbackUrl: process.env.NEXTAUTH_URL })
-        }
-      >
+      <button onClick={() => signIn("spotify", { callbackUrl: "/" })}>
         login
       </button>
     </>
