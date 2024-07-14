@@ -2,7 +2,7 @@
 
 import { signIn } from "next-auth/react";
 
-export default function Home() {
+export default function Login() {
   return (
     <>
       <p>idk u</p>
