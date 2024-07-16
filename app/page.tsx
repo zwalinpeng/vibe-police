@@ -1,6 +1,8 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
+import { getOwnedLists } from "./lib/spotify";
+import PlaylistView from "./components/playlistViewer";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -8,11 +10,13 @@ export default async function Home() {
   if (!session) {
     redirect("/login");
   }
-
+  // get playlists owned by user
+  const lists = await getOwnedLists(session);
   // if logged in
   return (
     <>
       <p>hi {session.user.name}</p>
+      <PlaylistView playlists={lists} />
     </>
   );
 }
