@@ -11,13 +11,11 @@ export const getOwnedLists = async (session: Session) => {
   );
   // continue until get all playlists
   while (data.next) {
-    console.log(data.next);
     data = await getPlaylists({ session, endpoint: data.next });
     owned = owned.concat(
       data.items.filter((item: any) => item.owner.id == session.user.id)
     );
   }
-  console.log(owned);
   return owned;
 };
 
