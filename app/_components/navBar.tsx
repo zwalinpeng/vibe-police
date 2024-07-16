@@ -2,6 +2,7 @@ import Link from "next/link";
 import LogOutButton from "./logOutButt";
 
 export default function NavBar() {
+  // TODO: fix on mobile
   return (
     <>
       <div className="w-full h-20 bg-emerald-800 sticky top-0">

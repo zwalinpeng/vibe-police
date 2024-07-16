@@ -1,5 +1,5 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { getPlaylist } from "@/app/lib/spotify";
+import { getPlaylist } from "@/app/_lib/spotify";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
