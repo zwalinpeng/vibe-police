@@ -16,6 +16,7 @@ export default async function Home() {
   return (
     <>
       <p>hi {session.user.name}</p>
+      <p>I WILL STYLE EVERYTHING LATER PROMISE</p>
       <PlaylistView playlists={lists} />
     </>
   );
