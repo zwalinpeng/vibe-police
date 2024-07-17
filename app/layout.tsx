@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Kumbh_Sans } from "next/font/google";
 import "./globals.css";
 import SessionWrapper from "./_components/sessionWrapper";
 import NavBar from "./_components/navBar";
 
-const inter = Inter({ subsets: ["latin"] });
+const kumbh = Kumbh_Sans({ weight: "600", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "vibe police",
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <SessionWrapper>
       <html lang="en">
-        <body className={inter.className}>
+        <body className={kumbh.className}>
           <NavBar />
           {children}
         </body>
