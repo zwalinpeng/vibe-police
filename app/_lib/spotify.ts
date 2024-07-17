@@ -1,6 +1,6 @@
 import { Session } from "next-auth";
 
-// playlist operations
+// spotify api calls + data cleaning
 
 // get all playlists owned by user
 export const getOwnedLists = async (session: Session) => {
@@ -59,8 +59,36 @@ export const getPlaylist = async ({
     }
   );
   const data = await response.json();
-  console.log(data);
   return data;
+};
+
+// get all tracks on playlist
+export const getAllTracks = async ({
+  session,
+  id,
+  fields = "",
+}: {
+  session: Session;
+  id: string;
+  fields?: string;
+}) => {
+  // initial get
+  let data = await getTracks({ session, id, fields });
+  let tracks = data.items.map((track: any) => ({
+    name: track.track.name,
+    id: track.track.id,
+  }));
+  // continue until get all tracks
+  while (data.next) {
+    data = await getPlaylists({ session, endpoint: data.next });
+    tracks = tracks.concat(
+      data.items.map((track: any) => ({
+        name: track.track.name,
+        id: track.track.id,
+      }))
+    );
+  }
+  return tracks;
 };
 
 // get tracks on playlist by id
@@ -69,12 +97,14 @@ const getTracks = async ({
   id,
   limit = 50,
   offset = 0,
-  endpoint = `https://api.spotify.com/v1/playlists/${id}/tracks?limit=${limit}&offset=${offset}`,
+  fields = "",
+  endpoint = `https://api.spotify.com/v1/playlists/${id}/tracks?limit=${limit}&offset=${offset}&fields=${fields}`,
 }: {
   session: Session;
   id: string;
   limit?: number;
   offset?: number;
+  fields?: string;
   endpoint?: string;
 }) => {
   const response = await fetch(endpoint, {
@@ -85,4 +115,31 @@ const getTracks = async ({
   });
   const data = await response.json();
   return data;
+};
+
+// get audio features for given tracks
+export const getAudioFeatures = async ({
+  session,
+  ids,
+}: {
+  session: Session;
+  ids: string[];
+}) => {
+  let i = 0;
+  let queried_ids = ids.slice(i, i + 50);
+  let result: any[] = [];
+  while (queried_ids.length > 0) {
+    const endpoint = `https://api.spotify.com/v1/audio-features?ids=${queried_ids}`;
+    const response = await fetch(endpoint, {
+      headers: {
+        Authorization: "Bearer " + session.user.access_token,
+      },
+      cache: "no-cache",
+    });
+    const data = await response.json();
+    result = result.concat(data.audio_features);
+    i += 50;
+    queried_ids = ids.slice(i, i + 50);
+  }
+  return result;
 };
