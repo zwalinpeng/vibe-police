@@ -125,6 +125,7 @@ export const getAudioFeatures = async ({
   session: Session;
   ids: string[];
 }) => {
+  // get audio features for tracks in increments of 50
   let i = 0;
   let queried_ids = ids.slice(i, i + 50);
   let result: any[] = [];
@@ -147,10 +148,7 @@ export const getAudioFeatures = async ({
 // get average stats for playlist
 export const getPlaylistStats = ({
   track_features,
-}: {
-  track_features: any[];
-}) => {
-  const features = [
+  features = [
     "danceability",
     "energy",
     "speechiness",
@@ -159,16 +157,21 @@ export const getPlaylistStats = ({
     "liveness",
     "valence",
     "tempo",
-  ];
+  ],
+}: {
+  track_features: any[];
+  features?: string[];
+}) => {
   // get avg score for each feature of interest
-  let avg: any = {};
-  console.log(track_features);
+  let avg: any = [];
   for (var f of features) {
     const total = track_features
       .map((track: any) => track[f] as number)
       .reduce((a: number, b: number) => a + b);
-    console.log(`${f} total ${total}`);
-    avg[f] = (total / track_features.length).toFixed(2);
+    avg.push({
+      name: f,
+      avg: total / track_features.length,
+    });
   }
   return avg;
 };
