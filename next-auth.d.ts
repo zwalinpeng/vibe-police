@@ -5,8 +5,14 @@ declare module "next-auth" {
     user: {
       id: string;
       access_token: string;
-      exp: number;
-      refresh_token: string;
     } & DefaultSession["user"];
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT extends NextAuthJWT {
+    access_token?: string;
+    refresh_token?: string;
+    access_exp?: number;
   }
 }
