@@ -143,3 +143,32 @@ export const getAudioFeatures = async ({
   }
   return result;
 };
+
+// get average stats for playlist
+export const getPlaylistStats = ({
+  track_features,
+}: {
+  track_features: any[];
+}) => {
+  const features = [
+    "danceability",
+    "energy",
+    "speechiness",
+    "acousticness",
+    "instrumentalness",
+    "liveness",
+    "valence",
+    "tempo",
+  ];
+  // get avg score for each feature of interest
+  let avg: any = {};
+  console.log(track_features);
+  for (var f of features) {
+    const total = track_features
+      .map((track: any) => track[f] as number)
+      .reduce((a: number, b: number) => a + b);
+    console.log(`${f} total ${total}`);
+    avg[f] = (total / track_features.length).toFixed(2);
+  }
+  return avg;
+};
