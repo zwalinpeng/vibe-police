@@ -34,14 +34,16 @@ export default async function Playlist({ params }: { params: { id: string } }) {
   return (
     <>
       <div className="flex items-center">
-        <Image
-          src={thumbnail}
-          height={200}
-          width={200}
-          style={{ borderRadius: "5%", objectFit: "contain" }}
-          alt={`${playlist.name} thumbnail}`}
-        />
-        <p className="text-[200px]">{playlist.name}</p>
+        <div className="overflow-hidden h-48 w-48 rounded-[5%]">
+          <Image
+            src={thumbnail}
+            height={200}
+            width={200}
+            style={{ objectFit: "cover" }}
+            alt={`${playlist.name} thumbnail}`}
+          />
+        </div>
+        <p className="text-3xl">{playlist.name}</p>
       </div>
       <StatViewer stats={stats} />
     </>

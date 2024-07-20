@@ -4,7 +4,7 @@ import "./globals.css";
 import SessionWrapper from "./_components/sessionWrapper";
 import NavBar from "./_components/navBar";
 
-const kumbh = Kumbh_Sans({ weight: "600", subsets: ["latin"] });
+const kumbh = Kumbh_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "vibe police",

@@ -8,7 +8,7 @@ export default function NavBar() {
       <div className="w-full h-20 bg-emerald-800 sticky top-0">
         <div className="container mx-auto px-4 h-full">
           <div className="flex justify-center items-center h-full">
-            <ul className="hidden md:flex gap-x-6 text-white">
+            <ul className="hidden md:flex gap-x-6 text-white font-bold">
               <li>
                 <Link href="/">home</Link>
               </li>
