@@ -26,11 +26,6 @@ export default async function Playlist({ params }: { params: { id: string } }) {
     );
   }
   const thumbnail = playlist.images ? playlist.images[0].url : "/no_image.jpg";
-  const fields = "next,items(track(name, id))";
-  const tracks = await getAllTracks({ session, id: params.id, fields });
-  const track_ids: string[] = tracks.map((track: any) => track.id);
-  const track_features = await getAudioFeatures({ session, ids: track_ids });
-  const stats = getPlaylistStats({ track_features });
   return (
     <>
       <div className="flex items-center">
@@ -45,7 +40,7 @@ export default async function Playlist({ params }: { params: { id: string } }) {
         </div>
         <p className="text-3xl">{playlist.name}</p>
       </div>
-      <StatViewer stats={stats} />
+      <StatViewer id={params.id} session={session} />
     </>
   );
 }
