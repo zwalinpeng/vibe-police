@@ -34,3 +34,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+why didn't i do data analysis in python??? because i don't have to :) yay !!
+
+![alt text](https://i.pinimg.com/736x/f6/b2/82/f6b28286372e14c849236dc0ff8438ce.jpg)
