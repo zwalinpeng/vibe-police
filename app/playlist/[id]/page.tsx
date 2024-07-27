@@ -18,7 +18,6 @@ export default async function Playlist({ params }: { params: { id: string } }) {
     redirect("/login");
   }
   const playlist = await getPlaylist({ session, id: params.id });
-  // console.log(playlist);
   if (session.user.id != playlist.owner.id) {
     return (
       <>

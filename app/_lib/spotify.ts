@@ -1,4 +1,5 @@
 import { Session } from "next-auth";
+import { getScore } from "./score";
 
 // spotify api calls + data cleaning
 
@@ -179,5 +180,7 @@ export const getPlaylistStats = ({
       avg: total / track_features.length,
     });
   }
+  const vibe = getScore(track_features);
+  avg.push({ name: "vibe", avg: vibe });
   return avg;
 };
