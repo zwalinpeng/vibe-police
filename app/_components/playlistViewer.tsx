@@ -6,9 +6,7 @@ export default function PlaylistView({ playlists }: { playlists: any }) {
   ));
   return (
     <>
-      <div className="grid md:grid-cols-5 auto-rows-fr m-7 md:mx-32 gap-5">
-        {listItems}
-      </div>
+      <div className="grid md:grid-cols-5 auto-rows-fr">{listItems}</div>
     </>
   );
 }

@@ -6,7 +6,7 @@ export default function PlaylistCard({ playlist }: { playlist: any }) {
   return (
     <>
       <Link href={`/playlist/${playlist.id}`}>
-        <div className="border-2 border-white m-4 p-1 self-start w-fit">
+        <div className="mx-4 px-3 pt-3 pb-5 self-start w-fit hover:bg-spotify-grey rounded-[5%]">
           <div className="overflow-hidden h-48 w-48 rounded-[5%]">
             <Image
               src={thumbnail}

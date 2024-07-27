@@ -14,6 +14,12 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
+    colors: {
+      "spotify-green": "#1DB954",
+      "spotify-black": "#191414",
+      "spotify-grey": "#1f1f1f",
+      "hover-grey": "#f2f2f2",
+    },
   },
   plugins: [],
 };

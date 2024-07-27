@@ -15,13 +15,15 @@ export default async function Home() {
   // if logged in
   return (
     <>
-      <p>hi {session.user.name}</p>
-      <p>I WILL STYLE EVERYTHING LATER PROMISE</p>
-      {lists.length == 0 ? (
-        <p>go make a playlist</p>
-      ) : (
-        <PlaylistView playlists={lists} />
-      )}
+      <div className="mx-4 md:mx-36">
+        <p>hi {session.user.name}</p>
+        <p>I WILL STYLE EVERYTHING LATER PROMISE</p>
+        {lists.length == 0 ? (
+          <p>go make a playlist</p>
+        ) : (
+          <PlaylistView playlists={lists} />
+        )}
+      </div>
     </>
   );
 }

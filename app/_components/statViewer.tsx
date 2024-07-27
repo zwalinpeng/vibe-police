@@ -26,14 +26,16 @@ export default function StatViewer({
         session,
         ids: track_ids,
       });
-      console.log(track_features);
       const data = getPlaylistStats({ track_features });
       const stat_rows = data.map(
         (stat: { name: string; avg: number }, index: number) => (
-          <tr key={stat.name}>
-            <td className="text-center">{index + 1}</td>
-            <td>{stat.name}</td>
-            <td className="text-center">
+          <tr
+            key={stat.name}
+            className="border-2 border-white rounded-[5%] hover:bg-spotify-grey"
+          >
+            <td className="text-center py-3">{index + 1}</td>
+            <td className="py-3">{stat.name}</td>
+            <td className="text-center py-3">
               {stat.name == "tempo"
                 ? `${stat.avg.toFixed(1)} bpm`
                 : `${(stat.avg * 100).toFixed(1)}%`}
@@ -45,21 +47,21 @@ export default function StatViewer({
     };
     loadStats();
   }, [id, session, setStats]);
-
+  // don't display table when still loading data
   if (!stats) {
     return (
       <>
-        <p>doing tricks on it</p>
+        <p>doing tricks on it !!!!!!</p>
       </>
     );
   }
   return (
     <>
-      <table className="border-white border-2">
-        <thead>
+      <table className="border-separate border border-white border-spacing-0 w-full">
+        <thead className="border border-white">
           <tr>
             <th>#</th>
-            <th>Stat</th>
+            <th className="text-left">Stat</th>
             <th>Score</th>
           </tr>
         </thead>
