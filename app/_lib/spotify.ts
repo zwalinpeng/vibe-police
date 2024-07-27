@@ -74,7 +74,9 @@ export const getAllTracks = async ({
 }) => {
   // initial get
   let data = await getTracks({ session, id, fields });
-  let tracks = data.items.map((track: any) => ({
+  // clean out null entries
+  let items = data.items.filter((track: any) => track.track);
+  let tracks = items.map((track: any) => ({
     name: track.track.name,
     id: track.track.id,
   }));
@@ -98,7 +100,7 @@ const getTracks = async ({
   limit = 50,
   offset = 0,
   fields = "",
-  endpoint = `https://api.spotify.com/v1/playlists/${id}/tracks?limit=${limit}&offset=${offset}&fields=${fields}`,
+  endpoint = `https://api.spotify.com/v1/playlists/${id}/tracks?limit=${limit}&offset=${offset}&fields=items.is_local,${fields}`,
 }: {
   session: Session;
   id: string;
@@ -113,7 +115,9 @@ const getTracks = async ({
     },
     cache: "no-cache",
   });
+  // filter out local files
   const data = await response.json();
+  data.items = data.items.filter((track: any) => !track.is_local);
   return data;
 };
 
@@ -142,6 +146,8 @@ export const getAudioFeatures = async ({
     i += 50;
     queried_ids = ids.slice(i, i + 50);
   }
+  // filter out null results
+  result = result.filter((track) => track);
   return result;
 };
 
