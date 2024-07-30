@@ -21,7 +21,9 @@ export default async function Home() {
         {lists.length == 0 ? (
           <p>go make a playlist</p>
         ) : (
-          <PlaylistView playlists={lists} />
+          <>
+            <PlaylistSearch playlists={lists} />
+          </>
         )}
       </div>
     </>
