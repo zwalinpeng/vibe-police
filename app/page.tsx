@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { getOwnedLists } from "./_lib/spotify";
-import PlaylistView from "./_components/playlistViewer";
+import PlaylistSearch from "./_components/playlistSearch";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -15,11 +15,12 @@ export default async function Home() {
   // if logged in
   return (
     <>
-      <div className="mx-4 md:mx-36">
-        <p>hi {session.user.name}</p>
-        <p>I WILL STYLE EVERYTHING LATER PROMISE</p>
+      <div className="md:mx-36">
+        <p className="mt-4 md:mt-10 ml-2 text-xl md:text-5xl font-bold">
+          hi {session.user.name} ! ! !
+        </p>
         {lists.length == 0 ? (
-          <p>go make a playlist</p>
+          <p>bro go make a playlist</p>
         ) : (
           <>
             <PlaylistSearch playlists={lists} />

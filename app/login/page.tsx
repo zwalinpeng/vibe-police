@@ -1,7 +1,7 @@
 "use client";
 
-import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
+import LoginPanel from "../_components/loginPanel";
 
 export default function Login() {
   const { status } = useSession();
@@ -9,17 +9,18 @@ export default function Login() {
   if (status == "authenticated") {
     return (
       <>
-        <p>ur alr logged in !!!!!!!</p>
-        <p>...why'd u come here</p>
+        <div className="text-xl text-center font-bold mx-auto w-fit my-10">
+          <p>ur alr logged in ! ! ! ! ! ! !</p>
+          <p>try another page ?</p>
+        </div>
       </>
     );
   }
   return (
     <>
-      <p>idk u</p>
-      <button onClick={() => signIn("spotify", { callbackUrl: "/" })}>
-        login
-      </button>
+      <div className="mx-auto flex justify-center">
+        <LoginPanel />
+      </div>
     </>
   );
 }

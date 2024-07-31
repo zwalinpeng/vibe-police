@@ -1,6 +1,6 @@
 import PlaylistCard from "./playlistCard";
 
-export default function PlaylistView({ playlists }: { playlists: any }) {
+export default function PlaylistView({ playlists }: { playlists: any[] }) {
   const listItems = playlists.map((playlist: any) => (
     <PlaylistCard key={playlist.id} playlist={playlist} />
   ));
