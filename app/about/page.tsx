@@ -9,7 +9,9 @@ export default function About() {
           <p>a web app for u to see the stats of ur spotify playlists :D</p>
         </div>
         <div className="mb-4">
-          <h1 className="font-bold text-lg">where'd the stats come from?</h1>
+          <h1 className="font-bold text-lg">
+            where`&#39;`d the stats come from?
+          </h1>
           <p>
             everything besides vibe is the average of the number spotify has for
             the tracks on ur playlist. u can find the definitions on their
@@ -24,7 +26,7 @@ export default function About() {
         </div>
         <div className="mb-4">
           <h1 id="vibe" className="font-bold text-lg">
-            where'd vibe come from then?
+            where`&#39;`d vibe come from then?
           </h1>
           <div className="flex">
             <p className="mr-1">math</p>
@@ -37,7 +39,7 @@ export default function About() {
             />
           </div>
           <p>
-            ... if u wanna know exactly how it's on the readme{" "}
+            ... if u wanna know exactly how it`&#39;`s on the readme{" "}
             <a
               href="https://github.com/zwalinpeng/vibe-police#"
               className="font-bold hover:underline"
@@ -60,10 +62,10 @@ export default function About() {
         </div>
         <div className="mb-4">
           <h1 className="font-bold text-lg">
-            i don't want to give u access to my spotify anymore {">"}:(
+            i don`&#39;`t want to give u access to my spotify anymore {">"}:(
           </h1>
           <p>
-            that's ok! just remove vibe police from{" "}
+            that`&#39;`s ok! just remove vibe police from{" "}
             <a
               className="hover:underline font-bold"
               href="https://www.spotify.com/us/account/apps/"
@@ -72,6 +74,10 @@ export default function About() {
             </a>{" "}
             :)
           </p>
+        </div>
+        <div className="mb-4">
+          <h1 className="font-bold text-lg">what is this?</h1>
+          <p>a web app for u to see the stats of ur spotify playlists :D</p>
         </div>
         <div className="mb-4">
           <h1 className="font-bold text-lg">

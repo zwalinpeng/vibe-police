@@ -7,6 +7,7 @@ find out if ur spotify playlists r a vibe or not! browse ur owned playlists and 
 future plans:
 
 - loading animation
+- identify outlier
 - aesthetic adjustments (maybe)
 - other suggestions ?
 

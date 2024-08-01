@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { getOwnedLists } from "./_lib/spotify";
 import PlaylistSearch from "./_components/playlistSearch";
+import { authOptions } from "./_lib/auth";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);

@@ -1,9 +1,9 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import StatViewer from "@/app/_components/statViewer";
 import { getPlaylist } from "@/app/_lib/spotify";
+import { authOptions } from "@/app/_lib/auth";
 
 export default async function Playlist({ params }: { params: { id: string } }) {
   const session = await getServerSession(authOptions);

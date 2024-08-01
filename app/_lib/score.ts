@@ -34,8 +34,9 @@ class TrackVector {
     }
   }
 
-  // dynamic setter ?
-  setAttr(attr: string, val: number) {
+  // dynamic setter kinda
+  setAttr(attr: keyof TrackVector, val: TrackVector[keyof TrackVector]) {
+    // @ts-expect-error
     this[attr] = val;
   }
 
@@ -43,7 +44,10 @@ class TrackVector {
   distance(a: TrackVector) {
     let dist: number = 0;
     for (let key of Object.keys(this)) {
-      dist += (this[key] - a[key]) ** 2;
+      dist +=
+        (<number>this[<keyof TrackVector>key] -
+          <number>a[<keyof TrackVector>key]) **
+        2;
     }
     return Math.sqrt(dist);
   }
@@ -86,7 +90,7 @@ const scaleDataset = (dataset: TrackVector[]): TrackVector[] => {
   // update dataset
   for (let index in dataset) {
     dataset[index].setAttr("key", keyScale[index]);
-    dataset[index].setAttr("loud", loudScale[index]);
+    dataset[index].setAttr("loudness", loudScale[index]);
     dataset[index].setAttr("tempo", tempoScale[index]);
     dataset[index].setAttr("time_signature", timeScale[index]);
   }
@@ -97,8 +101,11 @@ const scaleDataset = (dataset: TrackVector[]): TrackVector[] => {
 const getMean = (dataset: TrackVector[]): TrackVector => {
   let mean = new TrackVector();
   for (let key of Object.keys(mean)) {
-    let sum: number = dataset.reduce((sum, cur) => sum + cur[key], 0);
-    mean.setAttr(key, sum / dataset.length);
+    let sum: number = dataset.reduce(
+      (sum, cur) => sum + <number>cur[<keyof TrackVector>key],
+      0
+    );
+    mean.setAttr(<keyof TrackVector>key, sum / dataset.length);
   }
   return mean;
 };
@@ -107,14 +114,16 @@ const getMean = (dataset: TrackVector[]): TrackVector => {
 const getMedian = (dataset: TrackVector[]): TrackVector => {
   let median = new TrackVector();
   for (let key of Object.keys(median)) {
-    let attr_list: number[] = dataset.map((tVec: TrackVector) => tVec[key]);
+    let attr_list: number[] = dataset.map(
+      (tVec: TrackVector) => <number>tVec[<keyof TrackVector>key]
+    );
     attr_list.sort((x, y) => Number(x) - Number(y));
     const mid = Math.floor(attr_list.length / 2);
     const attr_median: number =
       attr_list.length % 2 == 0
         ? (attr_list[mid - 1] + attr_list[mid]) / 2
         : attr_list[mid];
-    median.setAttr(key, attr_median);
+    median.setAttr(<keyof TrackVector>key, attr_median);
   }
   return median;
 };
