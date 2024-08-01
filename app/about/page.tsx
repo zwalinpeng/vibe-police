@@ -76,10 +76,6 @@ export default function About() {
           </p>
         </div>
         <div className="mb-4">
-          <h1 className="font-bold text-lg">what is this?</h1>
-          <p>a web app for u to see the stats of ur spotify playlists :D</p>
-        </div>
-        <div className="mb-4">
           <h1 className="font-bold text-lg">
             omg ur so cool how can i reach u?
           </h1>
