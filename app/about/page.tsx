@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function About() {
   return (
     <>
-      <div className="mx-4 md:mx-36 my-4">
+      <div className="mx-4 md:mx-36 mt-4 mb-12">
         <div className="mb-4">
           <h1 className="font-bold text-lg">what is this?</h1>
           <p>a web app for u to see the stats of ur spotify playlists :D</p>
@@ -19,8 +19,7 @@ export default function About() {
               className="font-bold hover:underline"
             >
               here
-            </a>{" "}
-            :)
+            </a>
           </p>
         </div>
         <div className="mb-4">
@@ -117,6 +116,7 @@ export default function About() {
                 email
               </a>
             </li>
+            <li>:P</li>
           </ul>
         </div>
       </div>
