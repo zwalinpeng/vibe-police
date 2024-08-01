@@ -4,6 +4,8 @@ find out if ur spotify playlists r a vibe or not! browse ur owned playlists and 
 
 > a next.js/react/typescript web app using spotify web api and next-auth
 
+vist @ [https://vibe-police.vercel.app/] !!
+
 future plans:
 
 - loading animation
