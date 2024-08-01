@@ -50,7 +50,7 @@ export default function StatViewer({
   if (!stats) {
     return (
       <>
-        <p>doing tricks on it !!!!!!</p>
+        <p className="text-xl">doing tricks on it !!!!!!</p>
       </>
     );
   }

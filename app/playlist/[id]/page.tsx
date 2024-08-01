@@ -28,7 +28,7 @@ export default async function Playlist({ params }: { params: { id: string } }) {
   const thumbnail = playlist.images ? playlist.images[0].url : "/no_image.jpg";
   return (
     <>
-      <div className="mx-[10%] md:mx-[20%] lg:mx-[30%] mt-6 md:mt-12 mb-24 md:mb-36">
+      <div className="mx-[10%] md:mx-[15%] lg:mx-[20%] xl:mx-[30%] mt-6 md:mt-12 mb-24 md:mb-36">
         <div className="md:flex items-center">
           <div className="overflow-hidden relative h-[200px] w-[200px] mr-4 mb-4 rounded-[5%]">
             <Image
