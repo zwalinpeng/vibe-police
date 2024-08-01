@@ -148,5 +148,6 @@ export const getScore = (feature_list: any[]): number => {
   const dataset = getDataset(feature_list);
   const median = getMedian(dataset);
   const medDist = getDistFromCenter(dataset, median);
-  return (60 - medDist.max - medDist.avg) / 60;
+  console.log(medDist.max, medDist.avg);
+  return (25 - medDist.max - medDist.avg) / 25;
 };
