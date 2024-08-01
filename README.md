@@ -19,6 +19,14 @@ future plans:
 
 clone and then
 
+set up .env.local with
+
+- CLIENT_ID
+- CLIENT_SECRET
+- REDIRECT_URI
+- NEXTAUTH_URL
+- NEXTAUTH_SECRET
+
 ```bash
 npm run dev
 # or
