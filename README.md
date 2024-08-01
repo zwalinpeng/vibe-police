@@ -6,6 +6,8 @@ find out if ur spotify playlists r a vibe or not! browse ur owned playlists and 
 
 visit @ <https://vibe-police.vercel.app/> !!
 
+> u will need to give me ur email to use the app (i will try to get it approved by spotify so u will not need to anymore)
+
 future plans:
 
 - loading animation
