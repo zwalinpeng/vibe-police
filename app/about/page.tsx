@@ -1,24 +1,124 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <>
-      <div className="mx-4 md:mx-36">
-        <p>:P</p>
-        <p>
-          explaining my math :), so basically i chose some of the features
-          spotify offers in their api (pretty much all of them) and decided to
-          use similarity metrics (euclidean distance lmao) to see how similar
-          songs in the playlist are to each other. for most of the features on
-          spotify, it looked like they were between 0 and 1 inclusive, so i
-          scaled the features with larger ranges into the [0, 1] range (aka
-          min-max normalization). that way, all the features are equally
-          important in determining how similar the songs are to each other
-          (equality !!!!). and then i found the center of your playlist (the
-          median value of all the features) and got the distance of each song
-          from the center and then got the average but also found the biggest
-          distance and subtracted them both from 60 and scaled it so you get a
-          score out of 100 :D which is all to say, the number doesn't mean much
-          really because i made it up!!! tldr: number kinda real but not really
-        </p>
+      <div className="mx-4 md:mx-36 my-4">
+        <div className="mb-4">
+          <h1 className="font-bold text-lg">what is this?</h1>
+          <p>a web app for u to see the stats of ur spotify playlists :D</p>
+        </div>
+        <div className="mb-4">
+          <h1 className="font-bold text-lg">where'd the stats come from?</h1>
+          <p>
+            everything besides vibe is the average of the number spotify has for
+            the tracks on ur playlist. u can find the definitions on their
+            documentation{" "}
+            <a
+              href="https://developer.spotify.com/documentation/web-api/reference/get-audio-features"
+              className="font-bold hover:underline"
+            >
+              here
+            </a>{" "}
+            :)
+          </p>
+        </div>
+        <div className="mb-4">
+          <h1 id="vibe" className="font-bold text-lg">
+            where'd vibe come from then?
+          </h1>
+          <div className="flex">
+            <p className="mr-1">math</p>
+            <Image
+              src={"/heh.png"}
+              height={20}
+              width={20}
+              style={{ float: "left" }}
+              alt={"smug emoji"}
+            />
+          </div>
+          <p>
+            ... if u wanna know exactly how it's on the readme{" "}
+            <a
+              href="https://github.com/zwalinpeng/vibe-police#"
+              className="font-bold hover:underline"
+            >
+              here
+            </a>
+          </p>
+        </div>
+        <div className="mb-4">
+          <h1 className="font-bold text-lg">why no ai/ml?</h1>
+          <p>
+            <a
+              className="hover:underline font-bold"
+              href="https://developer.spotify.com/terms#section-iv-restrictions"
+            >
+              illegal
+            </a>{" "}
+            ! !
+          </p>
+        </div>
+        <div className="mb-4">
+          <h1 className="font-bold text-lg">
+            i don't want to give u access to my spotify anymore {">"}:(
+          </h1>
+          <p>
+            that's ok! just remove vibe police from{" "}
+            <a
+              className="hover:underline font-bold"
+              href="https://www.spotify.com/us/account/apps/"
+            >
+              here
+            </a>{" "}
+            :)
+          </p>
+        </div>
+        <div className="mb-4">
+          <h1 className="font-bold text-lg">
+            omg ur so cool how can i reach u?
+          </h1>
+          <div className="flex">
+            <p className="mr-1">omg noooo</p>
+            <Image
+              src={"/aw.png"}
+              height={20}
+              width={25}
+              style={{ float: "left" }}
+              alt={"smug emoji"}
+            />
+          </div>
+          <ul>
+            <li>
+              {"> "}
+              <a
+                className="hover:underline"
+                href="https://github.com/zwalinpeng"
+              >
+                github
+              </a>
+            </li>
+            <li>
+              {"> "}
+              <a
+                className="hover:underline"
+                href="https://www.linkedin.com/in/zoiepng/"
+              >
+                linkedin
+              </a>
+            </li>
+
+            <li>
+              {"> "}
+              <a
+                className="hover:underline"
+                href="mailto:zoiepng3102@gmail.com"
+              >
+                email
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </>
   );

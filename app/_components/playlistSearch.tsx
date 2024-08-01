@@ -22,7 +22,7 @@ export default function PlaylistSearch({ playlists }: { playlists: any[] }) {
           placeholder="find ur playlist"
           className="my-4 p-4 w-full bg-spotify-grey border-transparent border-2 focus:border-white focus:ring-0 focus:outline-none rounded-lg"
           onInput={handleInput}
-        ></input>
+        />
         <PlaylistView playlists={lists} />
       </div>
     </>

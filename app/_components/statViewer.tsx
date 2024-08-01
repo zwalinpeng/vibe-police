@@ -29,13 +29,12 @@ export default function StatViewer({
       const data = getPlaylistStats({ track_features });
       const stat_rows = data.map(
         (stat: { name: string; avg: number }, index: number) => (
-          <tr
-            key={stat.name}
-            className="border-2 border-white rounded-[5%] hover:bg-spotify-grey"
-          >
-            <td className="text-center py-3">{index + 1}</td>
+          <tr key={stat.name} className="hover:bg-spotify-grey">
+            <td className="rounded-l-md text-center py-3 max-md:px-2">
+              {index + 1}
+            </td>
             <td className="py-3">{stat.name}</td>
-            <td className="text-center py-3">
+            <td className="rounded-r-md text-center py-3">
               {stat.name == "tempo"
                 ? `${stat.avg.toFixed(1)} bpm`
                 : `${(stat.avg * 100).toFixed(1)}%`}
@@ -57,9 +56,9 @@ export default function StatViewer({
   }
   return (
     <>
-      <table className="border-separate border border-white border-spacing-0 w-full">
-        <thead className="border border-white">
-          <tr>
+      <table className="w-full">
+        <thead className="border-b-2 border-spotify-grey">
+          <tr className="h-3 leading-loose">
             <th>#</th>
             <th className="text-left">Stat</th>
             <th>Score</th>

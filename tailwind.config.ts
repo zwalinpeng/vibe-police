@@ -18,6 +18,7 @@ const config: Config = {
       transparent: "transparent",
       white: "#FFFFFF",
       "spotify-green": "#1DB954",
+      "spotify-dark-green": "#18a349",
       "spotify-black": "#191414",
       "spotify-grey": "#1f1f1f",
       "hover-grey": "#f2f2f2",

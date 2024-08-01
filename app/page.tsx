@@ -15,8 +15,8 @@ export default async function Home() {
   // if logged in
   return (
     <>
-      <div className="md:mx-36">
-        <p className="mt-4 md:mt-10 ml-2 text-xl md:text-5xl font-bold">
+      <div className="mx-[5%] lg:mx-[10%]">
+        <p className="mt-4 md:mt-10 ml-2 text-3xl md:text-5xl font-extrabold">
           hi {session.user.name} ! ! !
         </p>
         {lists.length == 0 ? (

@@ -5,9 +5,9 @@ export default function NavBar() {
   // TODO: fix on mobile
   return (
     <>
-      <div className="w-full h-20 bg-spotify-green sticky top-0">
+      <div className="w-full h-20 bg-spotify-green sticky top-0 z-50">
         <nav className="flex justify-center items-center h-full">
-          <ul className="hidden md:flex gap-x-7 font-bold">
+          <ul className="flex gap-x-7 font-bold">
             <li className="hover:scale-125">
               <Link href="/">home</Link>
             </li>

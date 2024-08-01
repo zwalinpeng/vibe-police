@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <SessionWrapper>
       <html lang="en">
-        <body className={kumbh.className}>
+        <body className={`${kumbh.className} overflow-x-hidden`}>
           <NavBar />
           {children}
         </body>

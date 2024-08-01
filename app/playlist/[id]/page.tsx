@@ -28,18 +28,17 @@ export default async function Playlist({ params }: { params: { id: string } }) {
   const thumbnail = playlist.images ? playlist.images[0].url : "/no_image.jpg";
   return (
     <>
-      <div className="mx-4 md:mx-36 my-12">
-        <div className="flex items-center">
-          <div className="overflow-hidden h-48 w-48 mr-4 mb-4 rounded-[5%]">
+      <div className="mx-[10%] md:mx-[20%] lg:mx-[30%] mt-6 md:mt-12 mb-24 md:mb-36">
+        <div className="md:flex items-center">
+          <div className="overflow-hidden relative h-[200px] w-[200px] mr-4 mb-4 rounded-[5%]">
             <Image
               src={thumbnail}
-              height={200}
-              width={200}
-              style={{ objectFit: "cover" }}
+              fill
+              style={{ objectFit: "contain" }}
               alt={`${playlist.name} thumbnail}`}
             />
           </div>
-          <p className="text-4xl font-semibold">{playlist.name}</p>
+          <p className="text-4xl pb-4 font-semibold">{playlist.name}</p>
         </div>
         <StatViewer id={params.id} session={session} />
       </div>
