@@ -3,13 +3,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import StatViewer from "@/app/_components/statViewer";
-import {
-  getAllTracks,
-  getPlaylist,
-  getAudioFeatures,
-  getPlaylistStats,
-} from "@/app/_lib/spotify";
-import { getScore } from "@/app/_lib/score";
+import { getPlaylist } from "@/app/_lib/spotify";
 
 export default async function Playlist({ params }: { params: { id: string } }) {
   const session = await getServerSession(authOptions);
@@ -25,6 +19,7 @@ export default async function Playlist({ params }: { params: { id: string } }) {
       </>
     );
   }
+
   const thumbnail = playlist.images ? playlist.images[0].url : "/no_image.jpg";
   return (
     <>

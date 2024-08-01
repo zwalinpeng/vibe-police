@@ -2,7 +2,6 @@ import Link from "next/link";
 import LogButton from "./logButt";
 
 export default function NavBar() {
-  // TODO: fix on mobile
   return (
     <>
       <div className="w-full h-20 bg-spotify-green sticky top-0 z-50">

@@ -28,11 +28,6 @@ export const authOptions: NextAuthOptions = {
       }
       // access token still valid
       else if (Math.floor(Date.now() / 1000) < (token.access_exp as number)) {
-        // console.log(
-        //   `${
-        //     ((token.access_exp as number) - Math.floor(Date.now() / 1000)) / 60
-        //   } min left`
-        // );
         return token;
       }
       // refresh token

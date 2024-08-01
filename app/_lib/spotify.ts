@@ -1,5 +1,6 @@
 import { Session } from "next-auth";
 import { getScore } from "./score";
+import { redirect } from "next/navigation";
 
 // spotify api calls + data cleaning
 
@@ -183,4 +184,10 @@ export const getPlaylistStats = ({
   const vibe = getScore(track_features);
   avg.push({ name: "vibe", avg: vibe });
   return avg;
+};
+
+const checkResponse = (res: any) => {
+  if (res.error) {
+    redirect(`/error/${res.error.status}`);
+  }
 };
