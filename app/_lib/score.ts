@@ -166,8 +166,6 @@ export const getScore = (feature_list: any[]): number => {
   const dataset = getDataset(feature_list);
   const median = getMedian(dataset);
   const medDist = getDistFromCenter(dataset, median);
-  console.log(medDist.max, medDist.avg);
-  console.log(medDist.max + 2 * medDist.avg);
   if (medDist.avg == 0) {
     return 1;
   }
@@ -175,7 +173,5 @@ export const getScore = (feature_list: any[]): number => {
     medDist.max + 2 * medDist.avg < 2.8
       ? Math.log(medDist.max + 2 * medDist.avg - 1) / Math.log(6)
       : medDist.max + 2 * medDist.avg - 2.6;
-  console.log(log);
-  console.log((4 - log) / 4);
   return (4 - log) / 4;
 };
