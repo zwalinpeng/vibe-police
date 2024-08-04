@@ -85,8 +85,10 @@ export const getAllTracks = async ({
   // continue until get all tracks
   while (data.next) {
     data = await getPlaylists({ session, endpoint: data.next });
+    // clean out null entries
+    items = data.items.filter((track: any) => track.track);
     tracks = tracks.concat(
-      data.items.map((track: any) => ({
+      items.map((track: any) => ({
         name: track.track.name,
         id: track.track.id,
       }))

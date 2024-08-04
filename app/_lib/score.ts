@@ -16,6 +16,22 @@ class TrackVector {
   time_signature: number = 0;
   valence: number = 0;
 
+  // weights for calculating distance
+  static weights = {
+    acousticness: 1,
+    danceability: 1,
+    energy: 1,
+    instrumentalness: 1,
+    key: 1,
+    liveness: 1,
+    loudness: 1,
+    mode: 1,
+    speechiness: 1,
+    tempo: 1,
+    time_signature: 1,
+    valence: 1,
+  };
+
   constructor(features?: trackFeatures) {
     if (features) {
       // this.id = features.id;
@@ -45,9 +61,11 @@ class TrackVector {
     let dist: number = 0;
     for (let key of Object.keys(this)) {
       dist +=
+        // @ts-expect-error
+        TrackVector.weights[key] *
         (<number>this[<keyof TrackVector>key] -
           <number>a[<keyof TrackVector>key]) **
-        2;
+          2;
     }
     return Math.sqrt(dist);
   }
@@ -149,5 +167,15 @@ export const getScore = (feature_list: any[]): number => {
   const median = getMedian(dataset);
   const medDist = getDistFromCenter(dataset, median);
   console.log(medDist.max, medDist.avg);
-  return (25 - medDist.max - medDist.avg) / 25;
+  console.log(medDist.max + 2 * medDist.avg);
+  if (medDist.avg == 0) {
+    return 1;
+  }
+  let log =
+    medDist.max + 2 * medDist.avg < 2.8
+      ? Math.log(medDist.max + 2 * medDist.avg - 1) / Math.log(6)
+      : medDist.max + 2 * medDist.avg - 2.6;
+  console.log(log);
+  console.log((4 - log) / 4);
+  return (4 - log) / 4;
 };
