@@ -170,8 +170,8 @@ export const getScore = (feature_list: any[]): number => {
     return 1;
   }
   let log =
-    medDist.max + 2 * medDist.avg < 2.8
+    medDist.max + 2 * medDist.avg < 2.84
       ? Math.log(medDist.max + 2 * medDist.avg - 1) / Math.log(6)
-      : medDist.max + 2 * medDist.avg - 2.6;
+      : medDist.max + 2 * medDist.avg - 2.5;
   return (4 - log) / 4;
 };
