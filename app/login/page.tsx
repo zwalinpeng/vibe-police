@@ -18,7 +18,13 @@ export default function Login() {
   }
   return (
     <>
-      <div className="mx-auto flex justify-center">
+      <div className="mx-auto flex flex-col justify-center items-center">
+        <div className="text-center py-5">
+          <h1 className="text-2xl font-bold">
+            it&#39;s the vibe police 🚓 🚨 🚓 🚨
+          </h1>
+          <p>see if ur playlist is a vibe or not ! !</p>
+        </div>
         <LoginPanel />
       </div>
     </>

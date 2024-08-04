@@ -3,7 +3,7 @@ import { signIn } from "next-auth/react";
 export default function LoginPanel() {
   return (
     <>
-      <div className="bg-spotify-grey w-fit text-center text-xl p-5 rounded-lg mt-10">
+      <div className="bg-spotify-grey w-fit text-center text-xl p-5 rounded-lg">
         <p className="mb-3">lend me ur spotify account ?</p>
         <button
           className="hover:scale-125 bg-spotify-green w-9/12 px-3 py-1 rounded-lg font-bold"
