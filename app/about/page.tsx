@@ -80,7 +80,7 @@ export default function About() {
             omg ur so cool how can i reach u?
           </h1>
           <div className="flex">
-            <p className="mr-1">omg noooo</p>
+            <p className="mr-1">omg noooo ahahahaha</p>
             <Image
               src={"/aw.png"}
               height={20}
@@ -118,7 +118,6 @@ export default function About() {
                 email
               </a>
             </li>
-            <li>:P</li>
           </ul>
         </div>
       </div>

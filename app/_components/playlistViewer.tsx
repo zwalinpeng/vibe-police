@@ -12,8 +12,8 @@ export default function PlaylistView({ playlists }: { playlists: any[] }) {
   ));
   return (
     <>
-      <div className="md:hidden">{listView}</div>
-      <div className="max-md:hidden grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 auto-rows-fr">
+      <div className="md:hidden mb-20">{listView}</div>
+      <div className="max-md:hidden grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 auto-rows-fr mb-24">
         {cardView}
       </div>
     </>
