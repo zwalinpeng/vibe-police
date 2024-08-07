@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { getOwnedLists } from "./_lib/spotify";
+import { getGuestLists, getOwnedLists } from "./_lib/spotify";
 import PlaylistSearch from "./_components/playlistSearch";
 import { authOptions } from "./_lib/auth";
 
@@ -11,7 +11,11 @@ export default async function Home() {
     redirect("/login");
   }
   // get playlists owned by user
-  const lists = await getOwnedLists(session);
+  console.log(session);
+  const lists =
+    session.user.id == "guest"
+      ? await getGuestLists(session)
+      : await getOwnedLists(session);
   // if logged in
   return (
     <>
