@@ -11,7 +11,7 @@ export default function LogButton() {
   // not logged in with spotify
   if (status != "authenticated" || session.user.guest) {
     // don't render button if on login page
-    if (path == "/login" || status == "loading") {
+    if (status == "loading") {
       return;
     }
     return (
