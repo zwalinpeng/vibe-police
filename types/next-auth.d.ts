@@ -2,10 +2,15 @@ import NextAuth, { DefaultSession } from "next-auth";
 
 declare module "next-auth" {
   interface Session {
-    user: {
-      id: string;
-      access_token: string;
-    } & DefaultSession["user"];
+    user: User;
+  }
+}
+
+declare module "next-auth" {
+  interface User {
+    id: string;
+    access_token?: string;
+    guest?: boolean;
   }
 }
 
