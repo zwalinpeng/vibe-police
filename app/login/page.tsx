@@ -4,9 +4,9 @@ import { signIn, useSession } from "next-auth/react";
 import LoginPanel from "../_components/loginPanel";
 
 export default function Login() {
-  const { status } = useSession();
+  const { data: session, status } = useSession();
   // user already logged in
-  if (status == "authenticated") {
+  if (status == "authenticated" && !session.user.guest) {
     return (
       <>
         <div className="text-xl text-center font-bold mx-auto w-fit my-10">
@@ -31,7 +31,7 @@ export default function Login() {
             if ur email isn&#39;t whitelisted or u don&#39;t want to login, u
             can view as guest{" "}
             <button
-              className="hover:scale-75 bg-spotify-green w-fit px-3 py-1 rounded-lg font-bold"
+              className="hover:underline font-bold"
               onClick={() => signIn("credentials", { callbackUrl: "/" })}
             >
               here

@@ -12,10 +12,9 @@ export default async function Home() {
   }
   // get playlists owned by user
   console.log(session);
-  const lists =
-    session.user.id == "guest"
-      ? await getGuestLists(session)
-      : await getOwnedLists(session);
+  const lists = session.user.guest
+    ? await getGuestLists(session)
+    : await getOwnedLists(session);
   // if logged in
   return (
     <>

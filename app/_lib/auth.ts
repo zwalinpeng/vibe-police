@@ -1,6 +1,6 @@
 import { NextAuthOptions, User } from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
-import Credentials from "next-auth/providers/credentials";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -11,7 +11,7 @@ export const authOptions: NextAuthOptions = {
         params: { scope: "playlist-read-private" },
       },
     }),
-    Credentials({
+    CredentialsProvider({
       name: "guest",
       credentials: {},
       async authorize(req) {
@@ -26,8 +26,12 @@ export const authOptions: NextAuthOptions = {
     maxAge: 60 * 60,
   },
   callbacks: {
-    jwt: async ({ token, account }) => {
-      // copy access information to jwt token on initial login]
+    jwt: async ({ token, account, user }) => {
+      // persist user to token
+      if (user) {
+        token.user = user;
+      }
+      // copy access information to jwt token on initial login
       if (account) {
         // guest login
         if (account.provider == "credentials") {
@@ -92,7 +96,7 @@ export const authOptions: NextAuthOptions = {
               `${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`
             ).toString("base64")}`,
           },
-          body: `grant_type=client_credentials&client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}`,
+          body: "grant_type=client_credentials",
         });
         const data = await request.json();
         token.access_token = data.access_token;
@@ -102,6 +106,7 @@ export const authOptions: NextAuthOptions = {
     },
     session: async ({ session, token }) => {
       // copy access token and id to session user
+      session.user.guest = token.user.guest;
       session.user.access_token = token.access_token as string;
       session.user.id = token.sub as string;
       return session;

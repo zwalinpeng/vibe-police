@@ -12,7 +12,7 @@ export default async function Playlist({ params }: { params: { id: string } }) {
     redirect("/login");
   }
   const playlist = await getPlaylist({ session, id: params.id });
-  if (session.user.id != playlist.owner.id) {
+  if (session.user.id != playlist.owner.id && playlist.owner.id != "spotify") {
     return (
       <>
         <p>this not ur playlist...</p>

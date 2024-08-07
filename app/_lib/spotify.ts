@@ -6,8 +6,11 @@ import { redirect } from "next/navigation";
 
 // get playlists for guest login
 export const getGuestLists = async (session: Session) => {
-  let lists: any[] = [];
-  return lists;
+  let lists = await getPlaylists({
+    session,
+    endpoint: "https://api.spotify.com/v1/browse/featured-playlists?limit=50",
+  });
+  return lists.playlists.items;
 };
 
 // get all playlists owned by user
@@ -188,7 +191,6 @@ const fetchSpotify = async ({
 
 const checkResponse = (res: any) => {
   if (res.error) {
-    console.log(res);
     redirect(`/error/${res.error.status}`);
   }
   return res;
