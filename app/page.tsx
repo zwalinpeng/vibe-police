@@ -11,7 +11,6 @@ export default async function Home() {
     redirect("/login");
   }
   // get playlists owned by user
-  console.log(session);
   const lists = session.user.guest
     ? await getGuestLists(session)
     : await getOwnedLists(session);
