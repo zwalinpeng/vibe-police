@@ -1,12 +1,12 @@
 "use client";
 
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import LoginPanel from "../_components/loginPanel";
 
 export default function Login() {
-  const { status } = useSession();
+  const { data: session, status } = useSession();
   // user already logged in
-  if (status == "authenticated") {
+  if (status == "authenticated" && !session.user.guest) {
     return (
       <>
         <div className="text-xl text-center font-bold mx-auto w-fit my-10">
@@ -26,6 +26,19 @@ export default function Login() {
           <p>see if ur playlist is a vibe or not ! !</p>
         </div>
         <LoginPanel />
+        <div className="text-center py-5">
+          <p>
+            if ur email isn&#39;t whitelisted or u don&#39;t want to login, u
+            can view as guest{" "}
+            <button
+              className="hover:underline font-bold"
+              onClick={() => signIn("credentials", { callbackUrl: "/" })}
+            >
+              here
+            </button>{" "}
+            :&gt;
+          </p>
+        </div>
       </div>
     </>
   );

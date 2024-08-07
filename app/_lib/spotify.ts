@@ -4,6 +4,15 @@ import { redirect } from "next/navigation";
 
 // spotify api calls + data cleaning
 
+// get playlists for guest login
+export const getGuestLists = async (session: Session) => {
+  let lists = await getPlaylists({
+    session,
+    endpoint: "https://api.spotify.com/v1/browse/featured-playlists?limit=50",
+  });
+  return lists.playlists.items;
+};
+
 // get all playlists owned by user
 export const getOwnedLists = async (session: Session) => {
   // initial get
@@ -33,13 +42,7 @@ const getPlaylists = async ({
   offset?: number;
   endpoint?: string;
 }) => {
-  const response = await fetch(endpoint, {
-    headers: {
-      Authorization: "Bearer " + session.user.access_token,
-    },
-    cache: "no-cache",
-  });
-  const data = await response.json();
+  const data = await fetchSpotify({ endpoint, session });
   return data;
 };
 
@@ -51,16 +54,10 @@ export const getPlaylist = async ({
   session: Session;
   id: string;
 }) => {
-  const response = await fetch(
-    `https://api.spotify.com/v1/playlists/${id}?fields=description,images,name,owner.id`,
-    {
-      headers: {
-        Authorization: "Bearer " + session.user.access_token,
-      },
-      cache: "no-cache",
-    }
-  );
-  const data = await response.json();
+  const data = await fetchSpotify({
+    endpoint: `https://api.spotify.com/v1/playlists/${id}?fields=description,images,name,owner.id`,
+    session,
+  });
   return data;
 };
 
@@ -113,14 +110,8 @@ const getTracks = async ({
   fields?: string;
   endpoint?: string;
 }) => {
-  const response = await fetch(endpoint, {
-    headers: {
-      Authorization: "Bearer " + session.user.access_token,
-    },
-    cache: "no-cache",
-  });
+  const data = await fetchSpotify({ endpoint, session });
   // filter out local files
-  const data = await response.json();
   data.items = data.items.filter((track: any) => !track.is_local);
   return data;
 };
@@ -139,13 +130,7 @@ export const getAudioFeatures = async ({
   let result: any[] = [];
   while (queried_ids.length > 0) {
     const endpoint = `https://api.spotify.com/v1/audio-features?ids=${queried_ids}`;
-    const response = await fetch(endpoint, {
-      headers: {
-        Authorization: "Bearer " + session.user.access_token,
-      },
-      cache: "no-cache",
-    });
-    const data = await response.json();
+    const data = await fetchSpotify({ endpoint, session });
     result = result.concat(data.audio_features);
     i += 50;
     queried_ids = ids.slice(i, i + 50);
@@ -188,8 +173,25 @@ export const getPlaylistStats = ({
   return avg;
 };
 
+const fetchSpotify = async ({
+  endpoint,
+  session,
+}: {
+  endpoint: string;
+  session: Session;
+}) => {
+  const response = await fetch(endpoint, {
+    headers: {
+      Authorization: "Bearer " + session.user.access_token,
+    },
+  });
+  const data = await response.json();
+  return checkResponse(data);
+};
+
 const checkResponse = (res: any) => {
   if (res.error) {
     redirect(`/error/${res.error.status}`);
   }
+  return res;
 };
