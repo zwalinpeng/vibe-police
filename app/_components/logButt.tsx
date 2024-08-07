@@ -1,12 +1,13 @@
 "use client";
 
-import { signIn, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function LogButton() {
   const { data: session, status } = useSession();
   const path = usePathname();
+  const router = useRouter();
   // not logged in with spotify
   if (status != "authenticated" || session.user.guest) {
     // don't render button if on login page
@@ -15,7 +16,7 @@ export default function LogButton() {
     }
     return (
       <>
-        <button onClick={() => signIn("spotify")}>log in</button>
+        <button onClick={() => router.push("/login")}>log in</button>
       </>
     );
   }
