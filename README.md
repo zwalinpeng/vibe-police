@@ -18,9 +18,7 @@ future plans:
 
 # run on ur local
 
-clone and then
-
-set up .env.local with
+clone and then set up .env.local with
 
 - CLIENT_ID (spotify)
 - CLIENT_SECRET (spotify)
@@ -44,7 +42,3 @@ bun dev
 3. find median of all features in playlist (median over mean to punish outliers)
 4. get distance of all tracks on playlist from median
 5. when calculating vibe, let x = 2 x average + largest distance. this is because i wanted average to be weighted more in the scoring. if x < 2.84, $y = \log_6 (x - 1)$ else, $y = x - 2.5$. then the vibe score = $\frac{4 - y}{4} * 100$. there wasn't too much actual mathematical reasoning behind these equations, because there isn't a limit to the range of x, i could only roughly design something based on the metrics of my playlists. the function is piecewise to flatten the upper ranges to enable a reasonable range of scores in the 90s.
-
-why didn't i do data analysis in python??? because i don't have to :) yay !!
-
-![alt text](https://i.pinimg.com/736x/f6/b2/82/f6b28286372e14c849236dc0ff8438ce.jpg)
