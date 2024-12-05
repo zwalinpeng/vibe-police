@@ -17,14 +17,15 @@ export const getGuestLists = async (session: Session) => {
 export const getOwnedLists = async (session: Session) => {
   // initial get
   let data = await getPlaylists({ session });
+  // get non-null playlists owned by user
   let owned = data.items.filter(
-    (item: any) => item.owner.id == session.user.id
+    (item: any) => item && item.owner.id == session.user.id
   );
   // continue until get all playlists
   while (data.next) {
     data = await getPlaylists({ session, endpoint: data.next });
     owned = owned.concat(
-      data.items.filter((item: any) => item.owner.id == session.user.id)
+      data.items.filter((item: any) => item && item.owner.id == session.user.id)
     );
   }
   return owned;
