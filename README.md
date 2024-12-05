@@ -1,3 +1,7 @@
+---
+# apis used were ddeprecated, rip vibe police
+---
+
 # it's the vibe police 🚓 🚨 🚓 🚨 🚓 🚨
 
 find out if ur spotify playlists r a vibe or not! browse ur playlists and see their average score on spotify's audio features as well as its vibe score (explained below)
