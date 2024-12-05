@@ -1,5 +1,5 @@
 ---
-# apis used were ddeprecated, rip vibe police
+# apis used were deprecated, rip vibe police
 ---
 
 # it's the vibe police 🚓 🚨 🚓 🚨 🚓 🚨
