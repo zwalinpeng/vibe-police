@@ -13,6 +13,9 @@ export default async function Playlist({
   } else if (params.code == 429) {
     // no more bandwith...give me a break
     errorMsg = "spotify is tired :( no more numbers :(";
+  } else if (params.code == 404) {
+    // making call to deprecated api
+    errorMsg = "spotify took this api request away ;-;";
   } else {
     errorMsg = "uhhh ngl idk what happened";
   }

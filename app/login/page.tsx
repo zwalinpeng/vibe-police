@@ -20,6 +20,10 @@ export default function Login() {
     <>
       <div className="mx-auto flex flex-col justify-center items-center">
         <div className="text-center py-5">
+          <p className="text-4xl text-red-800 font-bold p-8">
+            spotify deprecated the apis used so now this website does nothing
+            ;-;
+          </p>
           <h1 className="text-2xl font-bold">
             it&#39;s the vibe police 🚓 🚨 🚓 🚨
           </h1>
