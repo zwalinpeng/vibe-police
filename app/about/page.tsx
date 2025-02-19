@@ -6,7 +6,7 @@ export default function About() {
       <div className="mx-4 md:mx-36 mt-4 mb-12">
         <div className="mb-4">
           <h1 className="font-bold text-lg">
-            demo video, since api's got deprecated
+            demo video, since api&#39;s got deprecated
           </h1>
           <p>
             video is from before guest access was added, unfortunately I do not
